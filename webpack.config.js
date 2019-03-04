@@ -4,7 +4,7 @@ const path = require("path"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
     UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
-    SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+    SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 module.exports = {
     entry: {
         main: path.resolve(__dirname, "src", "Application.jsx")
@@ -16,15 +16,30 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, "dist"),
-        port: 3000
+        contentBase: path.resolve(__dirname, 'dist'),
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000/',
+                pathRewrite: {'^/api' : ''},
+                changeOrigin: true,
+                secure: false,
+            }
+        }
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.json$/,
+                loader: "json-loader",
+                options: {
+                    name: "[hash:5].[ext]"
                 }
             },
             {
@@ -34,11 +49,12 @@ module.exports = {
                     "css-loader",
                     "postcss-loader",
                     "sass-loader"
-                ],
+                ]
             },
             {
                 test: /\.(gif|jpe?g|png)$/i,
-                use: [{
+                use: [
+                    {
                         loader: "file-loader",
                         options: {
                             name: "images/hash.[ext]"
@@ -67,7 +83,8 @@ module.exports = {
             },
             {
                 test: /\.(svg)$/,
-                use: [{
+                use: [
+                    {
                         loader: "svg-sprite-loader",
                         options: {
                             extract: true,
@@ -77,7 +94,8 @@ module.exports = {
                     {
                         loader: "svgo-loader",
                         options: {
-                            plugins: [{
+                            plugins: [
+                                {
                                     removeTitle: true
                                 },
                                 {
@@ -101,20 +119,20 @@ module.exports = {
             new UglifyJsPlugin({
                 cache: true,
                 parallel: true,
-                sourceMap: true,
+                sourceMap: true
             }),
             new OptimizeCSSAssetsPlugin({})
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: [".js", ".jsx"],
         alias: {
-            components: path.resolve(__dirname, 'src', 'Components'),
-            containers: path.resolve(__dirname, 'src', 'Containers'),
-            actions: path.resolve(__dirname, 'src', 'actions'),
-            reducers: path.resolve(__dirname, 'src', 'reducers'),
-            efi: path.resolve(__dirname, 'src', 'efi'),
-            layouts: path.resolve(__dirname, 'src', 'layouts'),
+            components: path.resolve(__dirname, "src", "Components"),
+            containers: path.resolve(__dirname, "src", "Containers"),
+            actions: path.resolve(__dirname, "src", "actions"),
+            reducers: path.resolve(__dirname, "src", "reducers"),
+            efi: path.resolve(__dirname, "src", "efi"),
+            layouts: path.resolve(__dirname, "src", "layouts")
         }
     },
     plugins: [
@@ -127,5 +145,5 @@ module.exports = {
             chunkFilename: "[id].css"
         }),
         new SpriteLoaderPlugin()
-    ],
+    ]
 };
