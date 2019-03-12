@@ -11,7 +11,8 @@ module.exports = {
     },
     mode: "development",
     output: {
-        filename: "bundle.js",
+        filename: "[name].bundle.js",
+        chunkFilename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
         publicPath: "/"
     },
@@ -123,7 +124,10 @@ module.exports = {
                 sourceMap: true
             }),
             new OptimizeCSSAssetsPlugin({})
-        ]
+        ],
+        splitChunks: {
+            chunks: "all"
+        }
     },
     resolve: {
         extensions: [".js", ".jsx"],
