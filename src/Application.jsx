@@ -6,12 +6,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-// User imports
-
-//
+const app = document.querySelector("#root");
 class App extends React.Component {
     render() {
         return <></>
     }
 }
-ReactDOM.render(<App/>, document.getElementById("root"))
+ReactDOM.render(<App/>, app);
