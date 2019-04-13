@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-const app = document.querySelector("#root");
+const app = document.querySelector("#react-container");
 class App extends React.Component {
     render() {
         return <></>
