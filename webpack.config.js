@@ -11,8 +11,7 @@ module.exports = {
     },
     mode: "development",
     output: {
-        filename: "[name].bundle.js",
-        chunkFilename: "[name].bundle.js",
+        filename: "js/bundle.js",
         path: path.resolve(__dirname, "dist"),
         publicPath: "/"
     },
