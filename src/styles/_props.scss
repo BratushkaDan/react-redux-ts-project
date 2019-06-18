@@ -48,6 +48,6 @@ hr {
 }
 @font-face {
     // src: url("../fonts/fontName.ttf");
-    font-family: fontName, monospace;
+    font-family: fontName;
 }
-$fontVariableSName: fontName, monospace;
+$fontVariable: fontName, monospace;
