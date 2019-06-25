@@ -1,7 +1,12 @@
 module.exports = {
     plugins: [
     	require("autoprefixer")({
-			"browsers": [" > 1%", "last 5 version"],
+			"overrideBrowserlist": [
+				"last 1 version",
+				"> 1%",
+				"maintained node versions",
+				"not dead"
+			],
 	    })
     ],
-}
+};

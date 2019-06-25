@@ -4,8 +4,7 @@ import "core-js/es6/set";
 import "./styles/styles.scss";
 import React from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+
 const app = document.querySelector("#react-container");
 class App extends React.Component {
     render() {

@@ -4,17 +4,6 @@ hr {
     padding: 0;
 }
 
-// .i[class*="col"],
-// div[class*="col"] {
-//     padding-left: 0;
-//     padding-right: 0;
-// }
-// .no-gutters UPPER in additional to .row class
-
-.container {
-    padding: 0;
-}
-
 %centralizeH {
     display: flex;
     justify-content: center;
@@ -25,7 +14,7 @@ hr {
     align-items: center;
 }
 
-%centralizeFull {
+%centralize {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +35,9 @@ hr {
 .animationVisible {
     opacity: 1;
 }
+
 @font-face {
     // src: url("../fonts/fontName.ttf");
     font-family: fontName;
 }
-$fontVariable: fontName, monospace;
+$fontVariable: fontName, sans-serif;
