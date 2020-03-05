@@ -16,7 +16,17 @@ module.exports = merge(common, {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            "presets": [
+              "@babel/preset-react",
+              "@babel/preset-env"
+            ],
+            "plugins": [
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-transform-async-to-generator"
+            ]
+          }
         }
       },
       {
@@ -48,9 +58,6 @@ module.exports = merge(common, {
                 options: "images/[name].[ext]"
               }
             }
-          },
-          {
-            loader: "image-webpack-loader"
           }
         ]
       },

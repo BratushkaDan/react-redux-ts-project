@@ -1,14 +1,15 @@
 const path = require("path"),
-  { CleanWebpackPlugin } = require("clean-webpack-plugin"),
+  {CleanWebpackPlugin} = require("clean-webpack-plugin"),
   HTMLplugin = require("html-webpack-plugin"),
   MiniCssExtractPlugin = require("mini-css-extract-plugin"),
   OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
   UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
-  SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
+  SpriteLoaderPlugin = require("svg-sprite-loader/plugin"),
+  ProgressBarPlugin = require("progress-bar-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "src", "Application.jsx")
+    main: path.resolve(__dirname, "src", "Application.tsx")
   },
   output: {
     filename: "js/bundle.js",
@@ -29,13 +30,15 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      components: path.resolve(__dirname, "src", "Components"),
-      containers: path.resolve(__dirname, "src", "Containers"),
-      actions: path.resolve(__dirname, "src", "actions"),
-      reducers: path.resolve(__dirname, "src", "reducers"),
-      layouts: path.resolve(__dirname, "src", "layouts")
+      Components: path.resolve(__dirname, "src/app/components"),
+      Containers: path.resolve(__dirname, "src/app/containers"),
+      Actions: path.resolve(__dirname, "src/app/actions"),
+      Reducers: path.resolve(__dirname, "src/app/reducers"),
+      Layouts: path.resolve(__dirname, "src/app/layouts"),
+      Pages: path.resolve(__dirname, "src/app/pages"),
+      Modules: path.resolve(__dirname, "src/app/modules"),
     }
   },
   plugins: [
@@ -48,6 +51,7 @@ module.exports = {
       chunkFilename: "styles/[id].css"
     }),
     new SpriteLoaderPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new ProgressBarPlugin()
   ]
 };

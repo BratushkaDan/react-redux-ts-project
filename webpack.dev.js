@@ -20,10 +20,34 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+
+        }
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "source-map-loader"
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            "presets": [
+              "@babel/preset-react",
+              "@babel/preset-env"
+            ],
+            "plugins": [
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-transform-async-to-generator"
+            ]
+          }
         }
       },
       {
@@ -49,25 +73,6 @@ module.exports = merge(common, {
             loader: "file-loader",
             options: {
               name: "images/[name].[ext]"
-            }
-          },
-          {
-            loader: "image-webpack-loader",
-            options: {
-              gifsicle: {
-                interlanced: false
-              },
-              optipng: {
-                optimizationLevel: 7
-              },
-              pngquant: {
-                quality: "65-90",
-                speed: 4
-              },
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              }
             }
           }
         ]
