@@ -11,25 +11,25 @@
     "baseUrl": ".",
     "paths": {
       "Components/*": [
-        "src/app/components/*"
-      ],
-      "Containers/*": [
-        "src/app/containers/*"
+        "src/components/*"
       ],
       "Actions/*": [
-        "src/app/actions/*"
-      ],
-      "Layouts/*": [
-        "src/app/layouts/*"
-      ],
-      "Pages/*": [
-        "src/app/pages/*"
+        "src/actions/*"
       ],
       "Modules/*": [
-        "src/app/modules/*"
+        "src/modules/*"
       ],
       "Reducers/*": [
-        "src/app/reducers/*"
+        "src/reducers/*"
+      ],
+      "App/*": [
+        "src/app/*"
+      ],
+      "Reducers": [
+        "src/reducers"
+      ],
+      "Store": [
+        "src/store"
       ]
     }
   }

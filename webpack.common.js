@@ -32,13 +32,12 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      Components: path.resolve(__dirname, "src/app/components"),
-      Containers: path.resolve(__dirname, "src/app/containers"),
-      Actions: path.resolve(__dirname, "src/app/actions"),
-      Reducers: path.resolve(__dirname, "src/app/reducers"),
-      Layouts: path.resolve(__dirname, "src/app/layouts"),
-      Pages: path.resolve(__dirname, "src/app/pages"),
-      Modules: path.resolve(__dirname, "src/app/modules"),
+      Components: path.resolve(__dirname, "src/components"),
+      Actions: path.resolve(__dirname, "src/actions"),
+      Reducers: path.resolve(__dirname, "src/reducers"),
+      Modules: path.resolve(__dirname, "src/modules"),
+      App: path.resolve(__dirname, "src/app"),
+      Store: path.resolve(__dirname, "src/store")
     }
   },
   plugins: [

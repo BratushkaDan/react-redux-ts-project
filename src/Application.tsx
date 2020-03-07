@@ -5,14 +5,14 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 
 
-import Layout from "Layouts/Layout";
-import store from "./Store";
+import Router from "./routes";
+import Store from "./store";
 
 const app = document.getElementById("react-container");
 
 class App extends React.Component {
   render() {
-    return <Provider store={store}><BrowserRouter><Route path="/" component={Layout}/></BrowserRouter></Provider>
+    return <Provider store={Store}><BrowserRouter><Route path="/" component={Router}/></BrowserRouter></Provider>
   }
 }
 
