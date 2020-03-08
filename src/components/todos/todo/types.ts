@@ -1,4 +1,3 @@
-import {ITodo} from "../types";
+import {ITodo} from "API/types";
 
-export interface IProps extends ITodo {
-}
+export interface IProps extends ITodo {}

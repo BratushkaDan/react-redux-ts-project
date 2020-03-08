@@ -1,7 +1,7 @@
 import {Switch, Route} from "react-router";
 import React from 'react';
 import MainPage from "Components/mainPage/MainPage";
-import Todos from "Components/todos/Todos";
+import Todos from "Components/todos";
 import NotFoundPage from "Components/notFoundPage/NotFoundPage";
 
 const Router: React.FC = () => {

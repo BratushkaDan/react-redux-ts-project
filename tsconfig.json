@@ -30,6 +30,15 @@
       ],
       "Store": [
         "src/store"
+      ],
+      "API": [
+        "src/api"
+      ],
+      "API/*": [
+        "src/api/*"
+      ],
+      "Utils": [
+        "src/utils"
       ]
     }
   }

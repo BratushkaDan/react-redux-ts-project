@@ -9,7 +9,7 @@ const path = require("path"),
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "src", "Application.tsx")
+    main: path.resolve(__dirname, "src", "Application.jsx")
   },
   output: {
     filename: "js/bundle.js",
@@ -35,14 +35,15 @@ module.exports = {
       Components: path.resolve(__dirname, "src/components"),
       Actions: path.resolve(__dirname, "src/actions"),
       Reducers: path.resolve(__dirname, "src/reducers"),
-      Modules: path.resolve(__dirname, "src/modules"),
       App: path.resolve(__dirname, "src/app"),
-      Store: path.resolve(__dirname, "src/store")
+      Store: path.resolve(__dirname, "src/store"),
+      API: path.resolve(__dirname, "src/api"),
+      Utils: path.resolve(__dirname, "src/utils")
     }
   },
   plugins: [
     new HTMLplugin({
-      template: path.resolve(__dirname, "src", "index.html"),
+      template: path.resolve(__dirname, "src/public", "index.html"),
       filename: "index.html"
     }),
     new MiniCssExtractPlugin({

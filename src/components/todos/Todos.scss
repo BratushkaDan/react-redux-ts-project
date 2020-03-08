@@ -1,5 +1,12 @@
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(to top, #fff, #B4D0FF );
+  .todo:nth-child(even) {
+    background: cadetblue;
+    transition: .3s;
+    &_hide {
+      opacity: 0;
+    }
+  }
 }

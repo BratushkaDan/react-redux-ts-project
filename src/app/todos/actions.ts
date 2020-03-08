@@ -1,7 +1,8 @@
-import {IResponse, ITodos, IQueryParameters, IAction} from "./types";
+import {IResponse, IAction} from "./types";
 import {ThunkDispatch} from "redux-thunk";
 import {IStore} from "Store";
-
+import {ITodo, ITodoQueryParams} from "API/types";
+import {todosAPI} from "API";
 
 export const GET_TODOS_REQUEST = "GET_TODOS_REQUEST";
 const processOnLoading = (): IResponse => {
@@ -14,19 +15,15 @@ const processOnError = (): IResponse => {
 };
 
 export const GET_TODOS_SUCCESS = "GET_TODOS_SUCCESS";
-const processOnSuccess = (payload: ITodos): IResponse => {
+const processOnSuccess = (payload: Array<ITodo>): IResponse => {
   return {type: GET_TODOS_SUCCESS, payload};
 };
 
-export const fetchTodos = (query: IQueryParameters = {}) => {
+export const fetchTodos = (query: ITodoQueryParams = {}) => {
   return (dispatch: ThunkDispatch<IStore, void, IAction>, getState: () => IStore) => {
     dispatch(processOnLoading());
-    let url: string = `https://jsonplaceholder.typicode.com/todos?`;
-    if (query.limit) url += `_limit=${query.limit}`;
-    if (query.offset) url += `&_start=${query.offset}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then((payload: ITodos) => dispatch(processOnSuccess(payload)))
+    todosAPI.getTodos()
+      .then(payload => dispatch(processOnSuccess(payload)))
       .catch(() => dispatch(processOnError()));
   };
 };
