@@ -19,3 +19,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<IStore, void, any>, props: I
 };
 
 export default connect<IMapStateToProps, IMapDispatchToProps, IComponentProps/*, IStore*/>(mapStateToProps, mapDispatchToProps)(Todos);
+// export default connect<IMapStateToProps, IMapDispatchToProps, IComponentProps, {}>(mapStateToProps, mapDispatchToProps)(Todos);
